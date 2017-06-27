@@ -1,5 +1,5 @@
 # `dnsmasq-print`
-This simple dnsmasq setup just launches an DHCP server (no DNS) and prints new added DHCP leases on all TTYs and on a selected printer by calling a custom DHCP script whenever a new lease is provided.
+This simple dnsmasq setup just launches a DHCP server (no DNS) and prints new added DHCP leases on all TTYs and on a selected printer by calling a custom DHCP script whenever a new lease is provided.
 Allocation of IP-Addresses is configured to be strict sequential.
 
 ## Launch `dnsmasq`
