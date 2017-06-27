@@ -5,7 +5,13 @@ Allocation of IP-Addresses is configured to be strict sequential.
 ## Launch `dnsmasq`
 
 ```
-sudo dnsmasq --interface vboxnet1 --dhcp-sequential-ip --no-daemon --port 0 --dhcp-range=192.168.57.10,192.168.57.100,255.255.255.0,infinite --dhcp-leasefile=./leasefile --dhcp-script=./lease_print.sh
+sudo dnsmasq --interface vboxnet1 \
+--dhcp-sequential-ip \
+--no-daemon \
+--port 0 \
+--dhcp-range=192.168.57.10,192.168.57.100,255.255.255.0,infinite \
+--dhcp-leasefile=./leasefile \
+--dhcp-script=./lease_print.sh
 ```
 
 ## Try it
