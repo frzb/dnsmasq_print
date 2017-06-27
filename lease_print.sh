@@ -15,8 +15,8 @@
 # limitations under the License.
 
 ACTION=$1
-IP=$2
-MAC=$3
+MAC=$2
+IP=$3
 HOSTNAME=$3
 # Use "lpstat -d -p" to get a list of printers
 # PRINTER=HP-LaserJet-500-color-M551
