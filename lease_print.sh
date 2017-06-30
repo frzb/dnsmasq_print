@@ -19,18 +19,25 @@ MAC=$2
 IP=$3
 HOSTNAME=$3
 # Use "lpstat -d -p" to get a list of printers
-# PRINTER=HP-LaserJet-500-color-M551
+#PRINTER='HP-LaserJet-500-color-M551'
+#PRINTER='DYMO-LabelWriter-450'
 # Output of this PDF printer is at "/root/PDF"
-PRINTER=Generic-CUPS-PDF-Printer
+PRINTER='Generic-CUPS-PDF-Printer'
+# This filter can be used to exclude hosts from printing a label
+HOSTNAME_FILTER='nada'
 
-if [ $ACTION = 'add' ]; then
-  wall "New Machine: IP=$IP MAC=$MAC"
-  echo "IP=$IP MAC=$MAC" | lpr -P $PRINTER
-elif [ $ACTION = 'del' ]; then
-  wall "Removed Machine: IP=$IP MAC=$MAC"
-elif [ $ACTION = 'old' ]; then
-  wall "Existing Machine: IP=$IP MAC=$MAC"
+if [ "$ACTION" = 'add' ]; then
+  if [ "$HOSTNAME" != "$HOSTNAME_FILTER" ]; then
+    wall "New Machine: HOSTNAME=$HOSTNAME IP=$IP MAC=$MAC"
+    echo "HOSTNAME=$HOSTNAME IP=$IP MAC=$MAC" | lpr -P $PRINTER
+  else
+    wall "New Machine: HOSTNAME=$HOSTNAME IP=$IP MAC=$MAC - But not printing a label"
+  fi
+elif [ "$ACTION" = 'del' ]; then
+  wall "Removed Machine: HOSTNAME=$HOSTNAME IP=$IP MAC=$MAC"
+elif [ "$ACTION" = 'old' ]; then
+  wall "Existing Machine: HOSTNAME=$HOSTNAME IP=$IP MAC=$MAC"
 else
-  echo "Failure, something went wrong, input was: $@"
+  echo "Failure, something went wrong, input was: $*"
 fi
 
