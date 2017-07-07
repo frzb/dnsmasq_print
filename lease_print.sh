@@ -17,7 +17,7 @@
 ACTION=$1
 MAC=$2
 IP=$3
-HOSTNAME=$3
+HOSTNAME=$4
 # Use "lpstat -d -p" to get a list of printers
 #PRINTER='HP-LaserJet-500-color-M551'
 #PRINTER='DYMO-LabelWriter-450'
